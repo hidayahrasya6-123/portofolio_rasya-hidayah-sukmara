@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Rasya Hidayah Sukmara</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background: #1e293b;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: #fff;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #38bdf8;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
+        /* Section umum */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: #1e293b;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #38bdf8;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* About */
+        .about-text {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto;
+            color: #475569;
+            font-size: 1rem;
+        }
+
+        /* ===== PENDIDIKAN ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #38bdf8;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(56,189,248,0.15);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.5rem;
+            width: 19px;
+            height: 19px;
+            background: #fff;
+            border: 4px solid #38bdf8;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .timeline-item .year {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            color: #1e293b;
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-item h4 {
+            color: #38bdf8;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 3rem;
+        }
+
+        .skill-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-category h3 {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .skill-category h3 span {
+            display: inline-block;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid #38bdf8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(56,189,248,0.2);
+        }
+
+        .skill-card span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card b {
+            display: block;
+            color: #1e293b;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .skill-card small {
+            color: #64748b;
+            font-size: 0.78rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .project-card .content {
+            padding: 1.2rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .project-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .project-tags span {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.72rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        #kontak {
+            text-align: center;
+        }
+
+        #kontak p {
+            color: #475569;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            padding: 0.7rem 1.5rem;
+            background: #fff;
+            color: #1e293b;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            background: #38bdf8;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #94a3b8;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            section {
+                padding: 3rem 1.2rem;
+            }
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            .timeline-item::before {
+                left: -1.55rem;
+                width: 15px;
+                height: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Portofolio</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#pendidikan">Pendidikan</a></li>
+            <li><a href="#skill">Skill</a></li>
+            <li><a href="#proyek">Proyek</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="home">
+        <img src="rasya-foto.jpeg" alt="Foto Rasya Hidayah Sukmara">
+        <h1>Halo, Saya Rasya Hidayah Sukmara</h1>
+        <p>Web Developer — Saya membuat website yang menarik, cepat, dan responsif untuk membantu bisnis berkembang lebih cepat.</p>
+        <a href="#kontak" class="btn">Hubungi Saya</a>
+    </header>
+
+    <!-- Tentang -->
+    <section id="tentang">
+        <h2>Tentang Saya</h2>
+        <p class="about-text">
+            Saya merupakan lulusan SMKN 1 Kawali jurusan Rekayasa Perangkat Lunak (RPL) yang memiliki minat besar di bidang teknologi informasi, khususnya pengembangan website. Saya memiliki pengetahuan dasar dalam <b>HTML, CSS, PHP, Laravel</b>, dan <b>MySQL</b>, serta pengalaman membuat berbagai website. Saya juga aktif dalam organisasi Pramuka, sehingga terbiasa bekerja sama dalam tim, disiplin, bertanggung jawab, dan mampu beradaptasi. Saya memiliki semangat belajar yang tinggi untuk terus mengembangkan kemampuan dan pengalaman demi masa depan yang lebih baik.
+        </p>
+    </section>
+
+    <!-- Pendidikan -->
+    <section id="pendidikan">
+        <h2>Pendidikan</h2>
+        <div class="timeline">
+
+
+            <!-- SMK -->
+            <div class="timeline-item">
+                <span class="year">2024 – 2027</span>
+                <h3>SMK Negeri 1 Kawali</h3>
+                <h4>Rekayasa Perangkat Lunak (RPL)</h4>
+                <p>Mempelajari pemrograman web, database, dan pengembangan aplikasi menggunakan HTML, CSS, PHP, Laravel, dan MySQL. Aktif dalam organisasi Pramuka serta mengerjakan berbagai proyek website.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skill -->
+    <section id="skill">
+        <h2>Skill</h2>
+
+        <!-- HARD SKILL -->
+        <div class="skill-category">
+            <h3><span>💻 Hard Skill</span></h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span>🌐</span>
+                    <b>HTML</b>
+                    <small>Struktur web</small>
+                </div>
+                <div class="skill-card">
+                    <span>🎨</span>
+                    <b>CSS</b>
+                    <small>Styling & layout</small>
+                </div>
+                <div class="skill-card">
+                    <span>⚡</span>
+                    <b>JavaScript</b>
+                    <small>Interaksi web</small>
+                </div>
+                <div class="skill-card">
+                    <span>🐘</span>
+                    <b>PHP</b>
+                    <small>Back-end</small>
+                </div>
+                <div class="skill-card">
+                    <span>🚀</span>
+                    <b>Laravel</b>
+                    <small>Framework PHP</small>
+                </div>
+                <div class="skill-card">
+                    <span>🗄️</span>
+                    <b>MySQL</b>
+                    <small>Database</small>
+                </div>
+                <div class="skill-card">
+                    <span>🖌️</span>
+                    <b>Figma</b>
+                    <small>UI/UX Design</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOFT SKILL -->
+        <div class="skill-category">
+            <h3><span>🤝 Soft Skill</span></h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span>👥</span>
+                    <b>Kerja Sama Tim</b>
+                    <small>Kolaborasi efektif</small>
+                </div>
+                <div class="skill-card">
+                    <span>🎯</span>
+                    <b>Disiplin</b>
+                    <small>Tepat waktu</small>
+                </div>
+                <div class="skill-card">
+                    <span>🛡️</span>
+                    <b>Tanggung Jawab</b>
+                    <small>Amanah tugas</small>
+                </div>
+                <div class="skill-card">
+                    <span>🔄</span>
+                    <b>Adaptasi</b>
+                    <small>Cepat menyesuaikan</small>
+                </div>
+                <div class="skill-card">
+                    <span>📚</span>
+                    <b>Semangat Belajar</b>
+                    <small>Ingin berkembang</small>
+                </div>
+                <div class="skill-card">
+                    <span>💬</span>
+                    <b>Komunikasi</b>
+                    <small>Menyampaikan ide</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyek -->
+    <section id="proyek">
+        <h2>Proyek</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="company-profil.jpg" alt="Website Company Profile">
+                <div class="content">
+                    <h3>Website Company Profile</h3>
+                    <p>Website profil perusahaan yang menampilkan informasi layanan, produk, dan profil perusahaan secara profesional dan responsif.</p>
+                    <div class="project-tags">
+                        <span>Laravel</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                        <span>CSS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="club.jpeg" alt="Website Ekstrakurikuler">
+                <div class="content">
+                    <h3>Website Ekstrakurikuler</h3>
+                    <p>Website untuk mengelola pendaftaran anggota dan jadwal kegiatan ekstrakurikuler sekolah secara terpusat.</p>
+                    <div class="project-tags">
+                        <span>PHP</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="quiz-game.jpg" alt="Game Quiz">
+                <div class="content">
+                    <h3>Game Quiz</h3>
+                    <p>Game kuis interaktif yang dibuat dengan Godot Engine, dilengkapi sistem skor dan pertanyaan dinamis.</p>
+                    <div class="project-tags">
+                        <span>Godot</span>
+                        <span>GDScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak">
+        <h2>Kontak</h2>
+        <p>Tertarik bekerja sama? Hubungi saya melalui:</p>
+        <div class="social-links">
+            <a href="https://compose.mail.yahoo.com/?to=hidayahrasya6@yahoo.com" target="_blank">📧 Email</a>
+            <a href="https://wa.me/6283132312179" target="_blank">💬 WhatsApp</a>
+            <a href="https://github.com/hidayahrasya6-123" target="_blank">💻 GitHub</a>
+            <a href="https://www.instagram.com/rasyahdyh__?psln=Njc4MmtoN3Fpanlq" target="_blank">📸 Instagram</a>
+            <a href="https://www.linkedin.com/in/rasya-hidayah-248881448/" target="_blank">🔗 LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Rasya Hidayah Sukmara. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
